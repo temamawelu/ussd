@@ -4,13 +4,14 @@ namespace Stilinski\Ussd\Controllers;
 
 use Stilinski\Ussd\Repositories\ActivityLibrary;
 use Illuminate\Http\Request;
+use Stilinski\Ussd\Rules\ValidateMsisdn;
 
 class OnlineController extends Controller
 {
     // validate and process payload from provider
     function processPayload(Request $request){
         $this->validate($request, [
-            'phoneNumber' => ['required'],
+            'msisdn' => ['required', new ValidateMsisdn()],
             'text' => ['nullable'],
             'sessionId' => ['required']
         ]);

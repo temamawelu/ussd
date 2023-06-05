@@ -24,7 +24,17 @@ Stilinski Ussd is a modern multi-language (english and swahili) laravel dynamic 
 
 ### Require the package
 
-    composer require stilinski/ussd
+    composer require giggsey/libphonenumber-for-php
+    composer require doctrine/dbal
+
+### Run the migrations
+
+    php artisan migrate
+
+### Listen to the following queues
+    save-ussd-messages - save ussd session data into the database
+
+### Also require these additional packages
 
 ## Security Vulnerabilities
 

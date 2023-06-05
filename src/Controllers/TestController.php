@@ -5,6 +5,7 @@ namespace Stilinski\Ussd\Controllers;
 use Stilinski\Ussd\Repositories\ActivityLibrary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Stilinski\Ussd\Rules\ValidateMsisdn;
 
 class TestController extends Controller
 {
@@ -15,6 +16,12 @@ class TestController extends Controller
 
     public function processPayload(Request $request)
     {
+        $request->validate([
+            'msisdn' => ['required', new ValidateMsisdn()],
+            'input' => ['nullable'],
+            'session_id' => ['required']
+        ]);
+
         $input = $request->input('input');
         $originalUssdString = $input;
         $msisdn = $request->input('msisdn');
