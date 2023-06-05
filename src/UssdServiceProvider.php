@@ -12,19 +12,14 @@ class UssdServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/routes/api.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'stilinski');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->mergeConfigFrom(__DIR__ . '/../config/ussd.php', 'ussd');
         $this->publishes([
-            __DIR__.'/../config/ussd.php' => config_path('ussd.php'),
             __DIR__ . '/resources/assets' => public_path('assets'),
         ]);
 
         if ($this->app->runningInConsole()) {
             $this->publishResources();
         }
-    }
-
-    public function register()
-    {
-        $this->mergeConfigFrom(__DIR__ . '/../config/ussd.php', 'ussd');
     }
 
     protected function publishResources()

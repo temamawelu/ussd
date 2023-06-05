@@ -24,8 +24,12 @@ Stilinski Ussd is a modern multi-language (english and swahili) laravel dynamic 
 
 ### Require the package
 
-    composer require giggsey/libphonenumber-for-php
+    composer require stilinski/ussd
+
+### Also require these additional packages
+
     composer require doctrine/dbal
+    composer require giggsey/libphonenumber-for-php
 
 ### Run the migrations
 
@@ -34,7 +38,22 @@ Stilinski Ussd is a modern multi-language (english and swahili) laravel dynamic 
 ### Listen to the following queues
     save-ussd-messages - save ussd session data into the database
 
-### Also require these additional packages
+### Publish package support files
+    php artisan vendor:publish --tag=ussd-lang,ussd-repositories
+
+### Add the following variables in your root project's .env
+
+    RESTRICT_TO_WHITELIST=true
+    WHITELIST_MSISDNS="254705799644" #Comma separated phone numbers that you want to have access to the app *N/B* should be in 254 format
+    END_SESSION_SLEEP_SECONDS= 2
+    USSD_CODE=657 #This is the ussd code given to you by your provider eg 999
+    LOG_USSD_REQUEST=true #Log the requests hitting your endpoint
+
+### N/B Make sure your register "api/process-payload/55034fd5-bd23h5d9948f" url as the root endpoint with your ussd service provider
+
+### Simulator URL
+
+    The ussd simulator can be found in the url "/simulator". Kindly note that it mimics a live ussd environment meaning that you have to click "new session" button whenever you want to simulate the start of a new session.
 
 ## Security Vulnerabilities
 
