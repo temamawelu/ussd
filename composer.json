@@ -1,0 +1,18 @@
+{
+    "name": "stilinski/ussd",
+    "description": "an easy to use php USSD library",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Stilinski\\Ussd\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cyril Aguvasu",
+            "email": "aguvasucyril@gmail.com"
+        }
+    ],
+    "require": {}
+}
