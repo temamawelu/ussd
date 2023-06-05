@@ -61,7 +61,8 @@ class ActivityLibrary
             $userData = [
                 'msisdn'    => $this->msisdn
             ];
-            // TODO save new user to DB
+            // save new user to DB
+            saveUser($userData);
             $this->userInput['newUser'] = true;
         }
     }
