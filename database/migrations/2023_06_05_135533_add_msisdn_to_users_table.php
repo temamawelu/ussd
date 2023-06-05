@@ -17,6 +17,9 @@ class AddMsisdnToUsersTable extends Migration
             if (!Schema::hasColumn('users', 'msisdn')) {
                 $table->integer('msisdn')->nullable();
             }
+            if (!Schema::hasColumn('users', 'locale')) {
+                $table->string('locale')->default('en');
+            }
         });
     }
 
@@ -30,6 +33,9 @@ class AddMsisdnToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             if (Schema::hasColumn('users', 'msisdn')) {
                 $table->dropColumn('msisdn');
+            }
+            if (Schema::hasColumn('users', 'locale')) {
+                $table->dropColumn('locale');
             }
         });
     }

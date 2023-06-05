@@ -17,7 +17,7 @@ class CreateActivitiesTable extends Migration
             $table->id();
             $table->uuid();
             $table->string('session_id');
-            $table->integer('msisdn');
+            $table->foreignId('msisdn')->constrained();
             $table->string('activity');
             $table->integer('attempt')->default(0);
             $table->boolean('status')->default(false);
